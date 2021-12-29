@@ -29,7 +29,7 @@ window.addEventListener('scroll', _.throttle(function () {
 }, 300));
 
 
-toTolEl.addEventListener('click',function() {
+toTolEl.addEventListener('click', function () {
   gsap.to(window, .7, {
     scrollTo: 0
 
@@ -48,18 +48,18 @@ fadeEls.forEach(function (fadeEl, index) {
 new Swiper('.notice-line .swiper', {
   direction: 'vertical',
   autoplay: true,
-  loop:true
+  loop: true
 });
 
 new Swiper('.promotion .swiper', {
-  slidesPerView : 3,// 한번에 보여줄 슬라이드 개수
+  slidesPerView: 3,// 한번에 보여줄 슬라이드 개수
   spaceBetween: 10, // 슬라이드 사이 여백
   centeredSlides: true, // 1번 슬라이드가 가운데 보이기
   loop: true,
   autoplay: {
     delay: 5000
   },
-   // Navigation arrows
+  // Navigation arrows
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
@@ -76,14 +76,14 @@ new Swiper('.promotion .swiper', {
   }
 });
 
-new Swiper('.awards .swiper',{
+new Swiper('.awards .swiper', {
   autoplay: true,
   loop: true,
   spaceBetween: 30,
   slidesPerView: 5,
 
   // Navigation arrows
-    navigation: {
+  navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
   },
@@ -98,12 +98,12 @@ const promotionEl = document.querySelector('.promotion');
 const promotionToggleBtn = document.querySelector('.toggle-promotion');
 
 let isHidePromotion = false;
-promotionToggleBtn.addEventListener('click',function() {
+promotionToggleBtn.addEventListener('click', function () {
   isHidePromotion = !isHidePromotion
   if (isHidePromotion) {
     // 숨김 처리!
     promotionEl.classList.add('hide');
-  }else {
+  } else {
     // 보임 처리!
     promotionEl.classList.remove('hide');
   }
@@ -112,7 +112,7 @@ promotionToggleBtn.addEventListener('click',function() {
 function random(min, max) {
   // `.새Fixed()` 를 통해 변환된 문자 데이터를,
   // `parseFloadt()` 을 통해 소수점을 가지는 숫자 데이터로 변환
-  return parseFloat((Math.random() * (max -min) + min).toFixed(2))
+  return parseFloat((Math.random() * (max - min) + min).toFixed(2))
 }
 
 function floatingObject(selector, delay, size) {
@@ -123,7 +123,7 @@ function floatingObject(selector, delay, size) {
     repeat: -1,
     yoyo: true,
     ease: Power1.searInout,
-    delay: random(0,delay),
+    delay: random(0, delay),
   });
 }
 
@@ -132,17 +132,13 @@ floatingObject('.floating2', .5, 15);
 floatingObject('.floating3', 1.5, 20);
 
 const spyEls = document.querySelectorAll('section.scroll-spy');
-spyEls.forEach(function (spyEl){
+spyEls.forEach(function (spyEl) {
   new ScrollMagic
-  .Scene({
-    triggerElement: spyEl, // 보여짐 여부를 감시할 요소를 지정
-    triggerHook: .8
-  })
-  .setClassToggle(spyEl, 'show')
-  .addTo(new ScrollMagic.Controller());
+    .Scene({
+      triggerElement: spyEl, // 보여짐 여부를 감시할 요소를 지정
+      triggerHook: .8
+    })
+    .setClassToggle(spyEl, 'show')
+    .addTo(new ScrollMagic.Controller());
 
 });
-
-const thisYear = document.querySelector('.this-year');
-thisYear.textContent = new Date().getFullYear(); //2021
-
